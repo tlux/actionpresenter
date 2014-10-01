@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "actionpresenter"
   gem.homepage = "http://github.com/tlux/actionpresenter"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{A lightweight presenter implementation for Ruby on Rails.}
+  gem.description = gem.summary
   gem.email = "tobias.casper@gmail.com"
   gem.authors = ["Tobias Casper"]
   # dependencies defined in Gemfile

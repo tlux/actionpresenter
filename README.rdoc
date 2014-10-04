@@ -1,4 +1,4 @@
-= actionpresenter
+= ActionPresenter
 
 A lightweight presenter implementation for Ruby on Rails.
 

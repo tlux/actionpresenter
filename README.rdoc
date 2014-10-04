@@ -1,6 +1,6 @@
 = actionpresenter
 
-Description goes here.
+A lightweight presenter implementation for Ruby on Rails.
 
 == Contributing to actionpresenter
  

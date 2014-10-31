@@ -1,4 +1,5 @@
 require 'rubygems'
+require 'pathname'
 require 'active_support/all'
 
 module ActionPresenter

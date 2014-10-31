@@ -3,12 +3,10 @@ require 'active_support/all'
 
 module ActionPresenter
   def self.root
-    path = File.expand_path('../..', __FILE__)
-    raise path
-    path
+    Pathname.new(File.expand_path('../..', __FILE__))
   end
 end
 
-Dir["#{ActionPresenter.root}/lib/action_presenter/*.rb"].each do |filename|
+Dir[ActionPresenter.root.join('lib', 'action_presenter', '*.rb')].each do |filename|
   require filename
 end

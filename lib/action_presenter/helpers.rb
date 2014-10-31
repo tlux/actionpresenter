@@ -9,7 +9,7 @@ module ActionPresenter::Helpers
       "#{object.class.name}Presenter"
     end
     presenter_class = presenter_class.to_s.constantize unless presenter_class.is_a?(Class)
-    presenter = presenter_class.new(*[self, object].compact, options)
+    presenter = presenter_class.new(self, object, options)
     yield(presenter) if block_given?
     presenter
   end

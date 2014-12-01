@@ -14,6 +14,18 @@ class ActionPresenter::Base
       self.object
     end
   end
+  
+  def self.delegate_presented(name, options = {})
+    delegate_opts = options.slice(:to, :prefix, :allow_nil).reverse_merge(to: :object)
+    delegate name, delegate_opts
+    
+    define_method "#{name}_with_presenter" do
+      delegated_obj = self.public_send("#{name}_without_presenter")
+      present delegated_obj, options.except(*delegate_opts.keys)
+    end
+    
+    alias_method_chain name, :presenter
+  end
 
   def inspect
     if object.nil?

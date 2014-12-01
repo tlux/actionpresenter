@@ -21,7 +21,7 @@ class ActionPresenter::Base
     
     define_method "#{name}_with_presenter" do
       delegated_obj = self.public_send("#{name}_without_presenter")
-      present delegated_obj, options.except(*delegate_opts.keys)
+      present delegated_obj, options.except(*delegate_opts.keys) unless delegated_obj.nil?
     end
     
     alias_method_chain name, :presenter

@@ -14,7 +14,7 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://guides.rubygems.org/specification-reference/ for more options
-  gem.name = 'action_presenter'
+  gem.name = 'actionpresenter'
   gem.homepage = 'http://github.com/tlux/actionpresenter'
   gem.license = 'MIT'
   gem.summary = %Q{A lightweight presenter implementation for Ruby on Rails.}

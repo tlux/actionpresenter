@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'pathname'
 require 'active_support/all'
+require 'action_view'
 
 module ActionPresenter
   def self.root

@@ -157,11 +157,11 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
-  actionpack (~> 4.0)
-  actionview (~> 4.0)
-  activesupport (~> 4.0)
+  actionpack (>= 4)
+  actionview (>= 4)
+  activesupport (>= 4)
   bundler (~> 1.0)
   jeweler (~> 2.0.1)
   pry-byebug
-  rails (~> 4.0)
+  rails (>= 4)
   rspec-rails (~> 3.0)

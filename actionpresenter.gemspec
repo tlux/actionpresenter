@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "actionpresenter.gemspec",
     "lib/action_presenter.rb",
     "lib/action_presenter/base.rb",
     "lib/action_presenter/helpers.rb",
@@ -47,31 +48,31 @@ Gem::Specification.new do |s|
     s.specification_version = 4
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<activesupport>, ["~> 4.0"])
-      s.add_runtime_dependency(%q<actionpack>, ["~> 4.0"])
-      s.add_runtime_dependency(%q<actionview>, ["~> 4.0"])
+      s.add_runtime_dependency(%q<activesupport>, [">= 4"])
+      s.add_runtime_dependency(%q<actionpack>, [">= 4"])
+      s.add_runtime_dependency(%q<actionview>, [">= 4"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 2.0.1"])
-      s.add_development_dependency(%q<rails>, ["~> 4.0"])
+      s.add_development_dependency(%q<rails>, [">= 4"])
       s.add_development_dependency(%q<rspec-rails>, ["~> 3.0"])
       s.add_development_dependency(%q<pry-byebug>, [">= 0"])
     else
-      s.add_dependency(%q<activesupport>, ["~> 4.0"])
-      s.add_dependency(%q<actionpack>, ["~> 4.0"])
-      s.add_dependency(%q<actionview>, ["~> 4.0"])
+      s.add_dependency(%q<activesupport>, [">= 4"])
+      s.add_dependency(%q<actionpack>, [">= 4"])
+      s.add_dependency(%q<actionview>, [">= 4"])
       s.add_dependency(%q<bundler>, ["~> 1.0"])
       s.add_dependency(%q<jeweler>, ["~> 2.0.1"])
-      s.add_dependency(%q<rails>, ["~> 4.0"])
+      s.add_dependency(%q<rails>, [">= 4"])
       s.add_dependency(%q<rspec-rails>, ["~> 3.0"])
       s.add_dependency(%q<pry-byebug>, [">= 0"])
     end
   else
-    s.add_dependency(%q<activesupport>, ["~> 4.0"])
-    s.add_dependency(%q<actionpack>, ["~> 4.0"])
-    s.add_dependency(%q<actionview>, ["~> 4.0"])
+    s.add_dependency(%q<activesupport>, [">= 4"])
+    s.add_dependency(%q<actionpack>, [">= 4"])
+    s.add_dependency(%q<actionview>, [">= 4"])
     s.add_dependency(%q<bundler>, ["~> 1.0"])
     s.add_dependency(%q<jeweler>, ["~> 2.0.1"])
-    s.add_dependency(%q<rails>, ["~> 4.0"])
+    s.add_dependency(%q<rails>, [">= 4"])
     s.add_dependency(%q<rspec-rails>, ["~> 3.0"])
     s.add_dependency(%q<pry-byebug>, [">= 0"])
   end

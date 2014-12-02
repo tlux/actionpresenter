@@ -3,10 +3,18 @@ require 'action_view/base'
 module ActionPresenter::Helpers
   def present(*args)
     options = args.extract_options!
-    object = args.first
+    scope = Array(args.first)
+    object = scope.last
     presenter_class = options.delete(:with) do
       raise ArgumentError, 'Neither object nor presenter class specified' if object.nil?
-      "#{object.class.name}Presenter"
+      scoped_class_name = scope.map do |item|
+        case item
+        when Symbol then item.to_s.camelize
+        when Class then item.class.name
+        else item.name
+        end
+      end.join('::')
+      "#{scoped_class_name}Presenter"
     end
     presenter_class = presenter_class.to_s.constantize unless presenter_class.is_a?(Class)
     presenter = presenter_class.new(self, object, options)

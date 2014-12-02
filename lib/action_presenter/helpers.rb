@@ -7,13 +7,7 @@ module ActionPresenter::Helpers
     object = scope.last
     presenter_class = options.delete(:with) do
       raise ArgumentError, 'Neither object nor presenter class specified' if object.nil?
-      scoped_class_name = scope.map do |item|
-        case item
-        when Symbol then item.to_s.camelize
-        when Class then item.class.name
-        else item.name
-        end
-      end.join('::')
+      scoped_class_name = scope.map { |item| item.is_a?(Symbol) ? item.to_s.camelize : item.class.name }.join('::')
       "#{scoped_class_name}Presenter"
     end
     presenter_class = presenter_class.to_s.constantize unless presenter_class.is_a?(Class)

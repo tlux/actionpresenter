@@ -157,8 +157,6 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
-  actionview (~> 4.0)
-  activesupport (~> 4.0)
   bundler (~> 1.0)
   jeweler (~> 2.0.1)
   pry-byebug

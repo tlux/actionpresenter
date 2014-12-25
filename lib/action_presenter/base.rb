@@ -6,8 +6,8 @@ class ActionPresenter::Base
   end
 
   attr_reader :object, :options
-  delegate :present, to: :h
-  protected :present, :options
+  delegate :present, :present_collection, to: :h
+  protected :present, :present_collection, :options
  
   def self.presents(name)
     define_method name do

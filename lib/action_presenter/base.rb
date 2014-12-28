@@ -11,17 +11,24 @@ class ActionPresenter::Base
  
   def self.presents(name)
     define_method name do
-      self.object
+      object
     end
   end
   
   def self.delegate_presented(name, options = {})
-    delegate_opts = options.slice(:to, :prefix, :allow_nil).reverse_merge(to: :object)
+    delegate_opts = options.slice(:to, :prefix, :allow_nil)
+                    .reverse_merge(to: :object)
     delegate name, delegate_opts
     
     define_method "#{name}_with_presenter" do
-      delegated_obj = self.public_send("#{name}_without_presenter")
-      present delegated_obj, options.except(*delegate_opts.keys) unless delegated_obj.nil?
+      object = public_send("#{name}_without_presenter")
+      return if object.nil?
+      helper_options = options.except(*delegate_opts.keys)
+      if object.respond_to?(:each) && options.fetch(:resolve_collection, false)
+        present_collection object, helper_options
+      else
+        present object, helper_options
+      end
     end
     
     alias_method_chain name, :presenter
@@ -36,7 +43,7 @@ class ActionPresenter::Base
   end
 
   def method_missing(name, *args, &block)
-    if object and object.respond_to?(name, false)
+    if object && object.respond_to?(name, false)
       object.send(name, *args, &block)
     else
       super

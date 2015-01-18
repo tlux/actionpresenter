@@ -24,7 +24,7 @@ class ActionPresenter::Base
       object = public_send("#{name}_without_presenter")
       return if object.nil?
       helper_options = options.except(*delegate_opts.keys)
-      if object.respond_to?(:each) && options.fetch(:resolve_collection, false)
+      if object.respond_to?(:each)
         present_collection object, helper_options
       else
         present object, helper_options

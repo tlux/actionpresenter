@@ -9,4 +9,5 @@ group :development do
   gem 'jeweler', '~> 2.0.1'
   gem 'rspec-rails', '~> 3.0'
   gem 'pry-byebug'
+  gem 'faker'
 end

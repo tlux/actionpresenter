@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ActionPresenter::Helpers do
-  let(:helper) { FakedViewContext.new }
+  subject(:helper) { FakedViewContext.new }
 
   describe '#present' do
     it 'is available in view context' do
@@ -56,6 +56,12 @@ describe ActionPresenter::Helpers do
        'argument' do
       expect { |block| helper.present(Person.new, &block) }.to(
         yield_with_args(PersonPresenter)
+      )
+    end
+
+    it 'cannot use :scope together with a scoped object' do
+      expect { helper.present([:admin, Person.new], scope: :something) }.to(
+        raise_error('You cannot use :scope in conjunction with a scoped object')
       )
     end
   end

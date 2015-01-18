@@ -18,6 +18,7 @@ module ActionPresenter::Helpers
     if collection.nil? || !collection.respond_to?(:to_a)
       fail ArgumentError, 'No valid collection specified'
     end
+
     collection.to_a.compact.map do |object|
       present(object, options, &block)
     end
@@ -35,9 +36,9 @@ module ActionPresenter::Helpers
       end
 
       if options[:scope]
-        scope_and_object = [*options[:scope], object]
         fail ArgumentError, 'You cannot use :scope in conjunction with ' \
                             'a scoped object' if scope_and_object.many?
+        scope_and_object = [*options[:scope], object]
       end
 
       scoped_class_name = scope_and_object.map do |item|
@@ -47,6 +48,7 @@ module ActionPresenter::Helpers
         else item.class.name
         end
       end.join('::')
+
       "#{scoped_class_name}Presenter"
     end
 

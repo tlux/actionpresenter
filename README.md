@@ -1,5 +1,6 @@
 # ActionPresenter
 
+[![Gem Version](https://badge.fury.io/rb/actionpresenter.svg)](http://badge.fury.io/rb/actionpresenter)
 [![Code Climate](https://codeclimate.com/github/tlux/actionpresenter/badges/gpa.svg)](https://codeclimate.com/github/tlux/actionpresenter)
 
 A lightweight presenter implementation for Ruby on Rails.

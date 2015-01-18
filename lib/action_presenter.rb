@@ -9,6 +9,7 @@ module ActionPresenter
   end
 end
 
-Dir[ActionPresenter.root.join('lib', 'action_presenter', '*.rb')].each do |filename|
+required_files = Dir[ActionPresenter.root.join('lib/action_presenter/*.rb')]
+required_files.each do |filename|
   require filename
 end

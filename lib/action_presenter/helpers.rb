@@ -5,16 +5,20 @@ module ActionPresenter::Helpers
 
   def present(*args)
     options = args.extract_options!
-    scope_and_object = Array(args.first)
-    object = scope_and_object.last
-    presenter_class = extract_presenter_class(scope_and_object, options)
-    presenter = presenter_class.new(self, object, options.except(*VALID_OPTIONS))
+    scoped_object = Array(args.first)
+    object = scoped_object.last
+    presenter_class = extract_presenter_class(scoped_object, options)
+    presenter_opts = options.except(*VALID_OPTIONS)
+    presenter = presenter_class.new(self, object, presenter_opts)
     yield(presenter) if block_given?
     presenter
   end
 
   def present_collection(collection, options = {}, &block)
-    Array(collection).map do |object|
+    if collection.nil? || !collection.respond_to?(:to_a)
+      fail ArgumentError, 'No valid collection specified'
+    end
+    collection.to_a.compact.map do |object|
       present(object, options, &block)
     end
   end

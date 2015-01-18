@@ -35,11 +35,8 @@ class ActionPresenter::Base
   end
 
   def inspect
-    if object.nil?
-      "#<#{self.class.name}>"
-    else
-      "#<#{self.class.name} object: #{object.inspect}>"
-    end
+    object_str = " object: #{object.inspect}" unless object.nil?
+    "#<#{self.class.name}#{object_str}>"
   end
 
   def method_missing(name, *args, &block)

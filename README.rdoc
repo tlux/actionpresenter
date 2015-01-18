@@ -16,6 +16,6 @@ A lightweight presenter implementation for Ruby on Rails.
 
 == Copyright
 
-Copyright (c) 2014 Tobias Casper. See LICENSE.txt for
+Copyright (c) 2015 Tobias Casper. See LICENSE.txt for
 further details.
 

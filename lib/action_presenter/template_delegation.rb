@@ -16,8 +16,9 @@ module ActionPresenter::TemplateDelegation
     end
   end
 
-  def respond_to_missing_with_template_delegation?(name, include_private = false)
+  def respond_to_missing_with_template_delegation?(name,
+    include_private = false)
     @_template.respond_to?(name, include_private) ||
-    respond_to_missing_without_template_delegation?(name, include_private)
+      respond_to_missing_without_template_delegation?(name, include_private)
   end
 end

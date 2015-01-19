@@ -127,6 +127,11 @@ config.autoload_paths << Rails.root.join('app', 'presenters', 'concerns').to_s
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
 
+### Credits
+
+Many thanks to Ryan Bates whose Railscasts episode [Presenters from Scratch](http://railscasts.com/episodes/287-presenters-from-scratch) helped building the API for this Gem.
+
+
 ### Copyright
 
 Copyright (c) 2015 Tobias Casper. See LICENSE.txt for

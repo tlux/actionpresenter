@@ -43,11 +43,12 @@ module ActionPresenter::Helpers
 
       scoped_class_name = scope_and_object.map do |item|
         case item
+        when String then item.presence
         when Symbol then item.to_s.camelize
         when Class then item.name
         else item.class.name
         end
-      end.join('::')
+      end.compact.join('::')
 
       "#{scoped_class_name}Presenter"
     end

@@ -6,8 +6,7 @@ class ActionPresenter::Base
   end
 
   attr_reader :object, :options
-  delegate :present, :present_collection, to: :h
-  protected :present, :present_collection, :options
+  protected :options
  
   def self.presents(name)
     define_method name do
@@ -51,13 +50,31 @@ class ActionPresenter::Base
     (object && object.respond_to?(name, include_private)) || super
   end
 
+  alias_method :original, :object
+
   def to_model
     object
   end
 
   protected
+
+  def present(*args)
+    options = default_present_options(args.extract_options!)
+    h.present(*args, options)
+  end
+
+  def present_collection(collection, options = {})
+    h.present_collection(collection, default_present_options(options))
+  end
+
   def template
     @_template
   end
   alias_method :h, :template
+
+  private
+
+  def default_present_options(options)
+    options.reverse_merge(scope: self.class.name.try(:deconstantize))
+  end
 end

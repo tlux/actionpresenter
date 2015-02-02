@@ -9,7 +9,9 @@ module ActionPresenter
   end
 end
 
-required_files = Dir[ActionPresenter.root.join('lib/action_presenter/*.rb')]
-required_files.each do |filename|
-  require filename
-end
+require 'action_presenter/base'
+require 'action_presenter/helpers'
+require 'action_presenter/template_delegation'
+
+require ActionPresenter.root.join('lib', 'generators', 'action_presenter',
+                                  'presenter_generator.rb').to_s

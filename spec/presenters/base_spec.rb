@@ -61,6 +61,27 @@ describe ActionPresenter::Base do
         item.is_a?(Admin::PersonPresenter)
       }).to be true 
     end
+
+    it 'delegates to the original object and wraps it in a presenter in the ' \
+       'same scope by default' do
+      Admin::PersonPresenter.delegate_presented :associates
+      presenter = Admin::PersonPresenter.new(view_context, person)
+
+      expect(presenter.associates.all? { |item|
+        item.is_a?(Admin::PersonPresenter)
+      }).to be true 
+    end
+
+    it 'delegates to the original object and wraps it in a explicitly ' \
+       'defined presenter' do
+      Admin::PersonPresenter.delegate_presented :associates,
+                                                with: '::PersonPresenter'
+      presenter = Admin::PersonPresenter.new(view_context, person)
+
+      expect(presenter.associates.all? { |item|
+        item.is_a?(::PersonPresenter)
+      }).to be true
+    end
   end
 
   describe '#object', '#to_model' do
